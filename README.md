@@ -31,19 +31,20 @@ By Yanjie Ze, Siheng Zhao, Weizhuo Wang, Angjoo Kanazawa†, Rocky Duan†, Piet
 # Installation
 We will have two conda environments for TWIST2. One is called `twist2`, which can be used for controller training, controller deployment, and teleop data collection. The other is called `gmr`, which can be used for online motion retargeting. This is because isaacgym requires python 3.8, but newest mujoco requires python 3.10.
 
-**1**. Create conda environment:
+### Step 1: Create Conda Environment
 ```bash
 conda env remove -n twist2
 conda create -n twist2 python=3.8
 conda activate twist2
 ```
 
-**2**. Install isaacgym. Download from [official link](https://developer.nvidia.com/isaac-gym) and then install it:
+### Step 2: Install Isaac Gym
+Download from [official link](https://developer.nvidia.com/isaac-gym) and then install it:
 ```bash
 cd isaacgym/python && pip install -e .
 ```
 
-**3**. Install packages:
+### Step 3: Install Packages
 ```bash
 cd rsl_rl && pip install -e . && cd ..
 cd legged_gym && pip install -e . && cd ..
@@ -84,7 +85,8 @@ sudo systemctl restart redis-server
 ```
 
 
-**4**. if you wanna do sim2real with laptop, you also need to install my modified version of unitree sdk [here](https://github.com/YanjieZe/unitree_sdk2/tree/main/python_binding). (if you wanna do sim2real with onboard robot computer, no need to install unitree sdk on your laptop.)
+### Step 4: Install Unitree SDK2 for Laptop Sim2Real
+If you wanna do sim2real with laptop, you also need to install my modified version of unitree sdk [here](https://github.com/YanjieZe/unitree_sdk2/tree/main/python_binding). (if you wanna do sim2real with onboard robot computer, no need to install unitree sdk on your laptop.)
 ```bash
 # Clone the Unitree SDK2 repository
 cd ..
@@ -119,14 +121,16 @@ cd ../..
 ```
 
 
-**4**. [If you want to train your own controller, download data; otherwise, skip this step] Download TWIST2 dataset from [my google drive](https://drive.google.com/file/d/1JbW_InVD0ji5fvsR5kz7nbsXSXZQQXpd/view?usp=sharing) [Small note: if you use this dataset in your project, please also add proper citation to this work]. Unzip it to anywhere you like, and specify the `root_path` in `legged_gym/motion_data_configs/twist2_dataset.yaml` to the unzipped folder.
+### Step 5: Download Dataset for Training (Optional)
+[If you want to train your own controller, download data; otherwise, skip this step] Download TWIST2 dataset from [my google drive](https://drive.google.com/file/d/1JbW_InVD0ji5fvsR5kz7nbsXSXZQQXpd/view?usp=sharing) [Small note: if you use this dataset in your project, please also add proper citation to this work]. Unzip it to anywhere you like, and specify the `root_path` in `legged_gym/motion_data_configs/twist2_dataset.yaml` to the unzipped folder.
 
 **Note**: we also provide a small set of example motions in `assets/example_motions`. You can use them to test the system. It is recorded by myself so no license issue.
 
 **Note**: We also provide our controller ckpt `assets/ckpts/twist2_1017_20k.onnx` for you to test the system directly.
 
 
-**5**. Install GMR for online retargeting and teleop. We use a separate conda environment for GMR/online retargeting due to requiring python 3.10+.
+### Step 6: Install GMR for Online Retargeting and Teleop
+We use a separate conda environment for GMR/online retargeting due to requiring python 3.10+.
 ```bash
 conda create -n gmr python=3.10 -y
 conda activate gmr
@@ -143,7 +147,7 @@ conda install -c conda-forge libstdcxx-ng -y
 
 ```
 
-**6**. Install PICO SDK:
+### Step 7: Install PICO SDK
 1. On your PICO, install PICO SDK: see [here](https://github.com/XR-Robotics/XRoboToolkit-Unity-Client/releases/).
 2. On your own PC, 
     - Download [deb package for ubuntu 22.04](https://github.com/XR-Robotics/XRoboToolkit-PC-Service/releases/download/v1.0.0/XRoboToolkit_PC_Service_1.0.0_ubuntu_22.04_amd64.deb), or build from the [repo source](https://github.com/XR-Robotics/XRoboToolkit-PC-Service).
@@ -181,7 +185,7 @@ conda install -c conda-forge libstdcxx-ng -y
         ```
 
 
-**7**. Ready for training & deployment!
+### Step 8: Ready for Training and Deployment
 
 # Usage
 We have provided the trained student ckpt in `assets/ckpts/twist2_1017_20k.onnx`. You can directly use it for deployment. If you want to deploy our ckpt directly, go to **4** directly.
