@@ -46,14 +46,11 @@ cd isaacgym/python && pip install -e .
 
 ### Step 3: Install Packages
 ```bash
-cd rsl_rl && pip install -e . && cd ..
-cd legged_gym && pip install -e . && cd ..
 cd pose && pip install -e . && cd ..
 pip install "numpy==1.23.0" pydelatin wandb tqdm opencv-python ipdb pyfqmr flask dill gdown hydra-core imageio[ffmpeg] mujoco mujoco-python-viewer isaacgym-stubs pytorch-kinematics rich termcolor zmq
 pip install redis[hiredis] # for redis communication
 pip install pyttsx3 # for voice control
 pip install onnx onnxruntime-gpu # for onnx model inference
-pip install customtkinter # for gui
 ```
 
 if this is your first time to use redis, install and start redis server:
