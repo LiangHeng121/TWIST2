@@ -51,6 +51,7 @@ pip install "numpy==1.23.0" pydelatin wandb tqdm opencv-python ipdb pyfqmr flask
 pip install redis[hiredis] # for redis communication
 pip install pyttsx3 # for voice control
 pip install onnx onnxruntime-gpu # for onnx model inference
+pip install pyrealsense2
 ```
 
 if this is your first time to use redis, install and start redis server:
